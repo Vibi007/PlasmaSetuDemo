@@ -16,7 +16,7 @@ import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { FooterComponent } from './footer/footer.component';
 import { CustomizerComponent } from './customizer/customizer.component';
 import { MapViewComponent } from './map-view/map-view.component';
-import {} from 'googlemaps';
+// import {} from 'googlemaps';
 
 const components = [
   BtnLoadingComponent,
