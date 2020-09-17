@@ -15,7 +15,7 @@ import { SharedDirectivesModule } from '../directives/shared-directives.module';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { FooterComponent } from './footer/footer.component';
 import { CustomizerComponent } from './customizer/customizer.component';
-import { MapViewComponent } from './map-view/map-view.component';
+// import { MapViewComponent } from './map-view/map-view.component';
 // import {} from 'googlemaps';
 
 const components = [
@@ -28,7 +28,7 @@ const components = [
   AdminLayoutComponent,
   AuthLayoutComponent,
   BlankLayoutComponent,
-  MapViewComponent
+  // MapViewComponent
 ];
 
 @NgModule({

@@ -67,19 +67,19 @@ const routes: Routes = [
 			{
 				path: 'tables',
 				loadChildren: './views/data-tables/data-tables.module#DataTablesModule'
-			}, {
+			},/*  {
 				path: 'home',
 				loadChildren: './views/analytics/home/home.module#HomeModule'
 			}, {
 				path: 'index-map',
 				loadChildren: './views/analytics/index-map/index-map.module#IndexMapModule'
-			}, {
+			} , {
 				path: 'branch-map',
 				loadChildren: './views/analytics/branch-stats/branch-stats.module#BranchStatsModule'
-			}, {
+			},  {
 				path: 'data-process',
 				loadChildren: './views/analytics/data-process/data-process.module#DataProcessModule'
-			},
+			},*/
 			{
 				path: 'pages',
 				loadChildren: './views/pages/pages.module#PagesModule'
