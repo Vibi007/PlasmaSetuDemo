@@ -6,6 +6,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { SharedModule } from './shared/shared.module';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './shared/inmemory-db/inmemory-db.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -19,6 +20,7 @@ import { HttpConfigInterceptor } from './interceptor/http-service-interceptor';
 	],
 	imports: [
 		BrowserModule,
+		SharedModule,
 		HttpClientModule,
 		BrowserAnimationsModule,
 		NgbModule,
