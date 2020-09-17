@@ -1,0 +1,10 @@
+.no-padding{
+    padding: 0px;
+    padding-top: 10px;
+}
+
+@media only screen and (max-width: 500px) {
+    .main-content-wrap {
+        margin-top: 0px;
+    }
+}

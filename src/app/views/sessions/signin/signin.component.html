@@ -1,0 +1,61 @@
+<div class="card o-hidden" [@animate]="{value:'*',params:{y:'120px',opacity:'0',delay:'100ms', duration: '400ms'}}">
+	<div class="row">
+		<div class="col-md-6">
+			<div class="p-4">
+				<div class="auth-logo text-center mb-4">
+					<img src="assets/images/visual-analytcs.jpg" alt="">
+				</div>
+				<h1 class="mb-3 text-18">Sign In</h1>
+				<form #f="ngForm" [formGroup]="signinForm" (ngSubmit)="signinForm.valid && signin(signinForm.value);">
+					<div class="form-group">
+						<label for="email">Mobile Number</label>
+						<input id="email" class="form-control form-control-rounded"
+							[formControl]="signinForm.controls['email']" type="email" required>
+						<p class="errorMessage"
+							*ngIf="(signinForm.controls['email'].hasError('required') && f.submitted)"
+							style="color:red">*You must enter user name</p>
+						<p class="errorMessage" style="color:red"
+							*ngIf="(signinForm.controls['email'].hasError('pattern') && f.submitted)">
+							*user name should be a valid email</p>
+
+					</div>
+					<div class="form-group">
+						<label for="password">Enter OTP</label>
+						<input id="password" class="form-control form-control-rounded"
+							[formControl]="signinForm.controls['password']" type="text" required>
+						<p class="errorMessage"
+							*ngIf="(signinForm.controls['password'].hasError('required') && f.submitted)"
+							style="color:red">*You must enter password</p>
+
+					</div>
+					<!-- <button class="btn btn-rounded btn-primary btn-block mt-2">Sign In</button> -->
+					<btn-loading btnClass="btn-primary btn-rounded btn-block mt-3" [loadingText]="loadingText"
+						[loading]="loading">
+						Sign In
+					</btn-loading>
+				</form>
+
+				<div class="mt-3 text-center">
+					<a href="" class="text-muted" routerLink="/sessions/forgot"><u>Forgot Password</u></a>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6 text-center " >
+			<div class="pr-3 auth-right">
+				<div class="home-title">
+					<h3 class="mt-0"> Find Your Nearest </h3>
+					<h1 class="mt-0"> Plasma Donor! </h1>
+					<p class="mt-0">We understand how difficult Covid-19 had been, not only for general population but
+						equally hard for caring healthcare professionals. We wish our patients and clinicians good
+						health
+						and encourage you to be a plasma donor and a source of support to others when you have
+						recovered. We
+						also encourage you to enroll in research studies to further much needed knowledge of this new
+						disease. Our system is designed to respect your privacy and we have safeguards to protect
+						clinical
+						&amp; research information. </p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

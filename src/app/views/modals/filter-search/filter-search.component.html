@@ -1,0 +1,29 @@
+<form #f="ngForm" [formGroup]="filterForm" (ngSubmit)="filterForm.valid && onSubmit(filterForm.value);">
+	<div class="modal-header">
+		<h4 class="modal-title">Search Filter</h4>
+		<button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div class="modal-body">
+		<label>States</label>
+		<ng-select [items]="states" (change)="getDealersList($event)" bindLabel="name" [loading]="peopleLoading"
+			[searchFn]="customSearchFn" [formControl]="filterForm.controls['state']" required [placeholder]="'Select State'">
+			<ng-template ng-option-tmp let-item="item">
+				{{item}}
+			</ng-template>
+		</ng-select>
+		<label>Dealers</label>
+		<ng-select [items]="dealers" bindLabel="dealer_name" [loading]="peopleLoading"
+			[searchFn]="dealerSearchFn" [formControl]="filterForm.controls['dealer']" required [placeholder]="'Select Dealer'">
+			<ng-template ng-option-tmp let-item="item">
+				{{item.dealer_name}} <br />
+				<small><em>Pin Code : {{item.pinCode+', ' }}</em> <em>Dealer Id : {{item.dealer_id }}</em></small>
+			</ng-template>
+		</ng-select>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-outline-success">Submit</button>
+		<button type="button" class="btn btn-outline-dark" (click)="modal.dismiss('Close click')">Close</button>
+	</div>
+</form>

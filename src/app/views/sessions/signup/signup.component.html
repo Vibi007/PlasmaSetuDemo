@@ -1,0 +1,307 @@
+<div class="card o-hidden" [@animate]="{value:'*',params:{y:'120px',opacity:'0',delay:'100ms', duration: '400ms'}}">
+	<div class="row">
+
+		<div class="col-md-12">
+			<div class="p-4">
+				<div class="auth-logo text-center mb-4">
+					<img src="assets/images/visual-analytcs.jpg" alt="">
+				</div>
+				<h1 class="mb-3 text-18">Sign Up</h1>
+				<p class="mb-4 text-muted font-small">Lorem ipsum dolor sit amet.</p>
+				<form-wizard>
+					<wizard-step [title]="'Register As'" [isValid]="basicForm.valid"
+						(onNext)="onStep1Next(basicForm.value)">
+						<form [formGroup]="basicForm" class="custom-width">
+							<h6 class="mb-2">You want to register as?</h6>
+							<label class="radio radio-outline-primary">
+								<input type="radio" name="experience" [value]="'donor'" formControlName="experience">
+								<span>Donor</span>
+								<span class="checkmark"></span>
+							</label>
+							<label class="radio radio-outline-success">
+								<input type="radio" name="experience" [value]="'seeker'" formControlName="experience">
+								<span>Seeker</span>
+								<span class="checkmark"></span>
+							</label>
+							<label class="radio radio-outline-warning">
+								<input type="radio" name="experience" [value]="'volunteer'"
+									formControlName="experience">
+								<span>Volunteer</span>
+								<span class="checkmark"></span>
+							</label>
+						</form>
+					</wizard-step>
+
+					<wizard-step [title]="((data.user_type) ? data.user_type : '') + ' info' | titlecase"
+						[isValid]="step2Form.valid" (onNext)="step2Form.valid && onStep2Next(step2Form.value)">
+						<form [formGroup]="step2Form" class="custom-width">
+							<div class="row" *ngIf="data.user_type=='donor'">
+								<div class="form-group col-md-6 mb-3">
+									<label for="card">Blood Group</label>
+									<ng-select formControlName="blood_group" [placeholder]="'Select Blood Group'"
+										[searchable]="false" [clearable]="false">
+										<ng-option value="A+">
+											A+
+										</ng-option>
+										<ng-option value="A-">
+											A-
+										</ng-option>
+										<ng-option value="B+">
+											B+
+										</ng-option>
+										<ng-option value="B-">
+											B-
+										</ng-option>
+										<ng-option value="AB+">
+											AB+
+										</ng-option>
+										<ng-option value="AB-">
+											AB-
+										</ng-option>
+										<ng-option value="O-">
+											O-
+										</ng-option>
+										<ng-option value="O+">
+											O+
+										</ng-option>
+									</ng-select>
+								</div>
+								<div class="form-group col-md-6 mb-3">
+									<label for="card">Do you have any BP/Liver/Diabetes diseases?</label>
+									<ng-select formControlName="diseases" [placeholder]="'Any diseases?'"
+										[searchable]="false" [clearable]="false">
+										<ng-option value="yes">
+											Yes
+										</ng-option>
+										<ng-option value="no">
+											No
+										</ng-option>
+									</ng-select>
+								</div>
+								<div class="form-group col-md-6 mb-3">
+									<label for="card">Do you have Covid positive report?</label>
+									<ng-select [(ngModel)]="data.covid_report" formControlName="covid_report"
+										[placeholder]="'Covid positive report?'" [searchable]="false"
+										[clearable]="false">
+										<ng-option value="yes">
+											Yes
+										</ng-option>
+										<ng-option value="no">
+											No
+										</ng-option>
+									</ng-select>
+									<div *ngIf="data.covid_report=='yes'">
+										<label for="card">Attach Covid Positive Report</label>
+										<input type="file" class="form-control" id="covid_report_file"
+											name="covid_report_file" placeholder="Expires at">
+									</div>
+								</div>
+								<div class="form-group col-md-6 mb-3">
+									<label for="card">Do you have Discharge report?</label>
+									<ng-select [(ngModel)]="data.discharge_report" formControlName="discharge_report"
+										[placeholder]="'Discharge Report?'" [searchable]="false" [clearable]="false">
+										<ng-option value="yes">
+											Yes
+										</ng-option>
+										<ng-option value="no">
+											No
+										</ng-option>
+									</ng-select>
+									<div *ngIf="data.discharge_report=='yes'">
+										<label for="card">Attach Discharge Report</label>
+										<input type="file" class="form-control" formControlName="discharge_report_file"
+											id="discharge_report_file" name="discharge_report_file"
+											placeholder="Expires at">
+									</div>
+								</div>
+								<div class="form-group col-md-6 mb-3">
+									<label for="card">Asymptomatic survivor?</label>
+									<ng-select formControlName="asymptomatic" [placeholder]="'Asymptomatic Survivor?'"
+										[searchable]="false" [clearable]="false">
+										<ng-option value="yes">
+											Yes
+										</ng-option>
+										<ng-option value="no">
+											No
+										</ng-option>
+									</ng-select>
+								</div>
+								<div class="form-group col-md-6 mb-3">
+									<label for="card">Have you ever donated plasma?</label>
+									<ng-select [(ngModel)]="data.donated_plasma" formControlName="donated_plasma"
+										[placeholder]="'Donated Plasma?'" [searchable]="false" [clearable]="false">
+										<ng-option value="yes">
+											Yes
+										</ng-option>
+										<ng-option value="no">
+											No
+										</ng-option>
+									</ng-select>
+								</div>
+								<div class="form-group col-md-6 mb-3" *ngIf="data.donated_plasma=='yes'">
+									<label for="card">How many times donated?</label>
+									<input type="text" formControlName="times_donated" class="form-control"
+										id="times_donated" name="times_donated" placeholder="Enter times donated">
+								</div>
+								<div class="form-group col-md-6 mb-3" *ngIf="data.donated_plasma=='yes'">
+
+									<label for="card">last donated date?</label>
+									<input type="text" formControlName="donated_date" class="form-control"
+										id="donated_date" name="donated_date" placeholder="Enter last donated date">
+								</div>
+
+								<div class="form-group col-md-6 mb-3">
+									<label for="card">Attach Identification Proof PAN/Aadhar/Voter Id Card</label>
+									<input type="file" class="form-control" formControlName="id_file" id="id_file"
+										name="id_file">
+								</div>
+							</div>
+							<div class="row" *ngIf="data.user_type=='volunteer'">
+								<div class="form-group col-md-6 mb-3">
+									<h6 class="mb-2">Volunteer Type</h6>
+									<label class="radio radio-outline-warning">
+										<input type="radio" name="volunteer_type" [value]="1"
+											formControlName="volunteer_type">
+										<span>Health Worker</span>
+										<span class="checkmark"></span>
+									</label>
+									<label class="radio radio-outline-warning">
+										<input type="radio" name="volunteer_type" [value]="2"
+											formControlName="volunteer_type">
+										<span>Doctor</span>
+										<span class="checkmark"></span>
+									</label>
+									<label class="radio radio-outline-warning">
+										<input type="radio" name="volunteer_type" [value]="3"
+											formControlName="volunteer_type">
+										<span>Cab Service</span>
+										<span class="checkmark"></span>
+									</label>
+									<label class="radio radio-outline-warning">
+										<input type="radio" name="volunteer_type" [value]="4"
+											formControlName="volunteer_type">
+										<span>Awarness Spreading</span>
+										<span class="checkmark"></span>
+									</label>
+									<label class="radio radio-outline-warning">
+										<input type="radio" name="volunteer_type" [value]="5"
+											formControlName="volunteer_type">
+										<span>Covid survivor</span>
+										<span class="checkmark"></span>
+									</label>
+									<label class="radio radio-outline-warning">
+										<input type="radio" name="volunteer_type" [value]="6"
+											formControlName="volunteer_type">
+										<span>other</span>
+										<span class="checkmark"></span>
+									</label>
+								</div>
+								<div class="form-group col-md-6 mb-3">
+									<label for="card">Attach Identification Proof PAN/Aadhar/Voter Id Card</label>
+									<input type="file" class="form-control" formControlName="id_file" id="id_file"
+										name="id_file">
+								</div>
+							</div>
+							<div class="row" *ngIf="data.user_type=='donor'">
+								<div class="form-group col-md-12">
+									<label class="checkbox checkbox-primary">
+										<input type="checkbox" formControlName="terms" class="form-control" id="terms"
+											name="terms">
+										<span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+											tempor incididunt ut labore et dolore magna aliqua.</span>
+										<span class="checkmark"></span>
+									</label>
+								</div>
+							</div>
+							<div class="row" *ngIf="data.user_type=='seeker'">
+								<div class="form-group col-md-6 mb-3">
+									<label for="card">Patient Condition</label>
+									<ng-select formControlName="patient_condition" [placeholder]="'Select Blood Group'"
+										[searchable]="false" [clearable]="false">
+										<ng-option value="A+">
+											Mild
+										</ng-option>
+										<ng-option value="A-">
+											Severe
+										</ng-option>
+										<ng-option value="B+">
+											Critical
+										</ng-option>
+									</ng-select>
+								</div>
+								<div class="form-group col-md-6 mb-3"></div>
+								<div class="form-group col-md-6 mb-3">
+									<label for="card">Attach doctor's recommendation letter for plasma</label>
+									<input type="file" class="form-control" formControlName="id_file" id="id_file"
+										name="id_file">
+								</div>
+								<div class="form-group col-md-6 mb-3">
+									<label for="card">Attach Identification Proof PAN/Aadhar/Voter Id Card</label>
+									<input type="file" class="form-control" formControlName="id_file" id="id_file"
+										name="id_file">
+								</div>
+							</div>
+						</form>
+					</wizard-step>
+
+					<wizard-step [title]="'Basic Info'" (onNext)="onStep3Next($event)">
+						<form #paymentForm="ngForm">
+							<div class="row">
+								<div class="form-group col-md-6 mb-3">
+									<label for="card">Name</label>
+									<input type="text" class="form-control" id="name" name="name"
+										placeholder="Enter Name" [(ngModel)]="data.name">
+								</div>
+								<div class="form-group col-md-6 mb-3">
+									<label for="card">Age</label>
+									<input type="text" class="form-control" id="age" name="age" placeholder="Enter Age"
+										[(ngModel)]="data.age">
+								</div>
+								<div class="form-group col-md-6 mb-3">
+									<h6 class="mb-2">Gender</h6>
+									<label class="radio radio-outline-primary">
+										<input type="radio" name="gender" [value]="male">
+										<span>Male</span>
+										<span class="checkmark"></span>
+									</label>
+									<label class="radio radio-outline-primary">
+										<input type="radio" name="gender" [value]="female">
+										<span>female</span>
+										<span class="checkmark"></span>
+									</label>
+								</div>
+								<div class="form-group col-md-6 mb-3">
+									<label for="security">Phone Number</label>
+									<input type="text" class="form-control" id="phone" name="phone"
+										placeholder="Enter Phone Number" [(ngModel)]="data.phone">
+								</div>
+								<div class="form-group col-md-6 mb-3">
+									<label for="security">City</label>
+									<input type="text" class="form-control" id="city" name="city"
+										placeholder="Enter City" [(ngModel)]="data.city">
+								</div>
+								<div class="form-group col-md-6 mb-3">
+									<label for="security">State</label>
+									<input type="text" class="form-control" id="state" name="state"
+										placeholder="Enter State" [(ngModel)]="data.state">
+								</div>
+								<div class="form-group col-md-6 mb-3">
+									<label for="security">Pin Code</label>
+									<input type="text" class="form-control" id="pin" name="pin"
+										placeholder="Enter Pin Code" [(ngModel)]="data.pin">
+								</div>
+							</div>
+						</form>
+					</wizard-step>
+
+					<wizard-step [title]="'Final'" (onComplete)="onComplete($event)">
+						<div class="text-center mt-4 mb-4">
+							<i class="i-Checked-User text-32 mb-3 text-success d-inline-block"></i>
+							<h5 class="font-weight-light">Thank you! You have completed all the steps.</h5>
+						</div>
+					</wizard-step>
+				</form-wizard>
+			</div>
+		</div>
+	</div>
+</div>

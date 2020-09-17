@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-plasmasetu-dev-03521-authRole",
+      "UnauthRoleArn": "arn:aws:iam::733316258198:role/amplify-plasmasetu-dev-03521-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::733316258198:role/amplify-plasmasetu-dev-03521-authRole",
+      "Region": "ap-south-1",
+      "DeploymentBucketName": "amplify-plasmasetu-dev-03521-deployment",
+      "UnauthRoleName": "amplify-plasmasetu-dev-03521-unauthRole",
+      "StackName": "amplify-plasmasetu-dev-03521",
+      "StackId": "arn:aws:cloudformation:ap-south-1:733316258198:stack/amplify-plasmasetu-dev-03521/c2b5b100-f918-11ea-b3ee-02c8ac154338",
+      "AmplifyAppId": "d1s2y930zg8xrl"
+    }
+  }
+}

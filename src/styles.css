@@ -1,0 +1,29 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "~@ng-select/ng-select/themes/ant.design.theme.css";
+
+.ng-select .ng-arrow-wrapper .ng-arrow {
+    height: 7px !important;
+    width: 7px !important;
+    color: red;
+}
+
+.ng-select .ng-clear-wrapper {
+    opacity: unset !important;
+    background: white;
+}
+
+.ng-select .ng-clear-wrapper:hover {
+    background: white;
+}
+
+.ng-select .ng-clear-wrapper .ng-clear {
+    color: black;
+    top: 0px;
+    line-height: 11px !important;
+}
+
+/* .ng-select .ng-select-container {
+	border-radius: unset;
+	border: 0px;
+} */
